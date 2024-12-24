@@ -13,5 +13,17 @@ properties:
   reg:
     required: true
 
-  interrupts:
+  port:
+    type: int
+    required: true
+
+  uart-dev:
+    type: phandle
+    required: true
+    description: Get the handle of the UART device
+
+  pinctrl-0:
+    required: true
+
+  pinctrl-names:
     required: true
