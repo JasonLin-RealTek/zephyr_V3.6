@@ -1,0 +1,23 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright (c) 2024 Realtek Semiconductor Corporation, SIBG-SD7
+ *
+ */
+
+#include <zephyr/dt-bindings/pinctrl/realtek-rts5912-pinctrl.h>
+
+&pinctrl
+{
+	/omit-if-no-ref/ uart_rx_gpio012: uart1_rx_gpio012 {
+			pinmux = <REALTEK_RTS5912_PINMUX(12, FUNC1)>;
+			input-enable;
+			input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ uart_tx_gpio013: uart1_tx_gpio013 {
+			pinmux = <REALTEK_RTS5912_PINMUX(13, FUNC1)>;
+			input-enable;
+			input-schmitt-enable;
+	};
+};
