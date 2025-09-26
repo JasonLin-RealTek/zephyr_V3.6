@@ -3,7 +3,7 @@
 # Copyright (c) 2024 Realtek Semiconductor Corporation, SIBG-SD7
 #
 
-if SOC_RTS5918
+if SOC_RTS5919
 
 if REALTEK_RTS5912_RTMR
 
@@ -25,4 +25,4 @@ config FLASH
 
 endif # REALTEK_RTS5912_RTMR
 
-endif # SOC_RTS5918
+endif # SOC_RTS5919

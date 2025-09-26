@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#ifndef _REALTEK_RTS5912_REG_SPIC_H
-#define _REALTEK_RTS5912_REG_SPIC_H
+#ifndef _REALTEK_RTS5919_REG_SPIC_H
+#define _REALTEK_RTS5919_REG_SPIC_H
 
 /**
  * @brief SPIC Controller (SPIC)
@@ -125,4 +125,4 @@ struct reg_spic_reg {
 #define SPIC_TXNDF_NUM_Pos             (0UL)
 #define SPIC_TXNDF_NUM_Msk             GENMASK(23, 0)
 
-#endif /* _REALTEK_RTS5912_REG_SPIC_H */
+#endif /* _REALTEK_RTS5919_REG_SPIC_H */

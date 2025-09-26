@@ -62,7 +62,7 @@ source "drivers/clock_control/Kconfig.rv32m1"
 
 source "drivers/clock_control/Kconfig.rts5912"
 
-source "drivers/clock_control/Kconfig.rts5918"
+source "drivers/clock_control/Kconfig.rts5919"
 
 source "drivers/clock_control/Kconfig.esp32"
 

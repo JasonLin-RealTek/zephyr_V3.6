@@ -5,9 +5,9 @@
  * Author: Lin Yu-Cheng <lin_yu_cheng@realtek.com>
  */
 
-#ifndef SOC_REALTEK_RTS5912_H_
-#define SOC_REALTEK_RTS5912_H_
+#ifndef SOC_REALTEK_RTS5919_H_
+#define SOC_REALTEK_RTS5919_H_
 
 #include <cmsis_core_m_defaults.h>
 
-#endif /* SOC_REALTEK_RTS5912_H_ */
+#endif /* SOC_REALTEK_RTS5919_H_ */

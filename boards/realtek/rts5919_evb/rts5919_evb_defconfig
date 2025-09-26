@@ -3,8 +3,8 @@
 # Copyright (c) 2024 Realtek Semiconductor Corporation, SIBG-SD7
 #
 
-# Enable RTS5918 image tool
-#CONFIG_REALTEK_RTS5918_BOOTROM_HEADER=y
+# Enable rts5919 image tool
+#CONFIG_REALTEK_rts5919_BOOTROM_HEADER=y
 
 # Serial Driver
 CONFIG_SERIAL=y
@@ -16,4 +16,4 @@ CONFIG_CONSOLE=y
 CONFIG_UART_CONSOLE=y
 
 # Enable GPIO
-CONFIG_GPIO=y
+#CONFIG_GPIO=y

@@ -3,5 +3,5 @@
 # Copyright (c) 2024 Realtek Semiconductor Corporation, SIBG-SD7
 #
 
-config BOARD_RTS5918_EVB
-	select SOC_RTS5918
+config BOARD_RTS5919_EVB
+	select SOC_RTS5919

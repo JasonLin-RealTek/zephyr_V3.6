@@ -1,6 +1,0 @@
-board:
-  name: rts5918_evb
-  full_name: RTS5918 Evaluation Board
-  vendor: realtek
-  socs:
-  - name: rts5918

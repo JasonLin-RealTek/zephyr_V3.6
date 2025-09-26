@@ -13,7 +13,7 @@
 
 LOG_MODULE_REGISTER(soc, CONFIG_SOC_LOG_LEVEL);
 
-#if defined(CONFIG_RTS5918_ON_ENTER_CPU_IDLE_HOOK)
+#if defined(CONFIG_RTS5919_ON_ENTER_CPU_IDLE_HOOK)
 bool z_arm_on_enter_cpu_idle(void)
 {
 	/* Returning false prevent device goes to sleep mode */
@@ -28,7 +28,7 @@ bool z_arm_on_enter_cpu_idle(void)
  */
 void soc_early_init_hook(void)
 {
-	if (!IS_ENABLED(CONFIG_RTS5912_DEBUG_SWJ)) {
+	if (!IS_ENABLED(CONFIG_RTS5919_DEBUG_SWJ)) {
 		return;
 	}
 

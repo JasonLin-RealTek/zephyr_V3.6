@@ -6,13 +6,13 @@
  */
 
 /dts-v1/;
-#include <realtek/ec/rts5918.dtsi>
-#include <realtek/ec/rts5918-pinctrl.dtsi>
+#include <realtek/ec/rts5919.dtsi>
+#include <realtek/ec/rts5919-pinctrl.dtsi>
 #include <zephyr/dt-bindings/gpio/gpio.h>
 
 / {
-	model = "Realtek RTS5918 Evaluation Board";
-	compatible = "realtek,rts5918-evb";
+	model = "Realtek rts5919 Evaluation Board";
+	compatible = "realtek,rts5919-evb";
 
 	chosen {
 		zephyr,sram = &sram0;

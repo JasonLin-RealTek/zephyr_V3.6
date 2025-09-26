@@ -10,12 +10,12 @@
 
 #include "device_power.h"
 
-static void rts5912_light_sleep(void)
+static void rts5919_light_sleep(void)
 {
 
 }
 
-static void rts5912_heavy_sleep(void)
+static void rts5919_heavy_sleep(void)
 {
 
 
@@ -26,10 +26,10 @@ void pm_state_set(enum pm_state state, uint8_t substate_id)
 
 	switch (state) {
 	case PM_STATE_SUSPEND_TO_IDLE:
-		rts5912_light_sleep();
+		rts5919_light_sleep();
 		break;
 	case PM_STATE_SUSPEND_TO_RAM:
-		rts5912_heavy_sleep();
+		rts5919_heavy_sleep();
 		break;
 	default:
 		break;

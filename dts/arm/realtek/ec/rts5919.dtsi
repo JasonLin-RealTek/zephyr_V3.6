@@ -7,7 +7,7 @@
 
 #include <arm/armv8-m.dtsi>
 #include <zephyr/dt-bindings/adc/adc.h>
-#include <zephyr/dt-bindings/clock/rts5912_clock.h>
+#include <zephyr/dt-bindings/clock/rts5919_clock.h>
 #include <zephyr/dt-bindings/gpio/realtek-gpio.h>
 #include <zephyr/dt-bindings/pwm/pwm.h>
 #include <mem.h>
@@ -70,18 +70,19 @@
 		ranges;
 
 		sccon: clock-controller@40100000 {
-			compatible = "realtek,rts5918-sccon";
-			reg = <0x40100000 0xf0>;
+			compatible = "realtek,rts5919-sccon";
+			reg = <0x40100000 0x1000>;
 			#clock-cells = <2>;
 			clocks = <&rc25m>, <&pll>;
 			clock-names = "rc25m", "pll";
+			status = "okay";
 		};
 
 		slwtmr0: slwtmr0@40253700 {
 			compatible = "realtek,rts5912-slwtimer";
 			reg = <0x40253700 0x10>;
 			interrupts = <102 0>;
-			clocks = <&sccon RTS5912_SCCON_PERIPH_GRP1 PERIPH_GRP1_SLWTMR0_CLKPWR>;
+			clocks = <&sccon RTS5919_CLK_RC25M RTS5919_SLWTMR0_PWR>;
 			clock-names = "slwtmr";
 			max-value = <0xFFFFFFFF>;
 			clock-frequency = <1000000>;
@@ -109,41 +110,14 @@
 			compatible = "realtek,rts5912-uart";
 			reg = <0x40251800 0x0020>;
 			port = <0>;
-			clocks = <&sccon RTS5912_SCCON_UART UART0_CLKPWR>;
+			clocks = <&sccon RTS5919_CLK_LOW RTS5919_UART0_PWR>;
 			clock-names = "uart0";
 			status = "disabled";
 		};
 
 		pinctrl: pin-controller@40230000 {
 			compatible = "realtek,rts5912-pinctrl";
-			#address-cells = <1>;
-			#size-cells = <1>;
 			reg = <0x40230000 0x300>;
-		};
-
-		wdog: watchdog@40253F00 {
-			compatible = "realtek,rts5912-watchdog";
-			reg = <0x40253F00 0x14>;
-			interrupt-parent = <&nvic>;
-			interrupts = <209 0>;
-			clocks = <&sccon RTS5912_SCCON_PERIPH_GRP2 PERIPH_GRP2_WDT_CLKPWR>;
-			clock-names = "watchdog";
-			clk-divider = <33>;
-			status = "disabled";
-		};
-
-		flash_controller: flash-controller@40000000 {
-			compatible = "realtek,rts5912-flash-controller";
-			reg = <0x40000000 0x200>;
-			#address-cells = <1>;
-			#size-cells = <1>;
-
-			eflash: eflash@60000000 {
-				compatible = "soc-nv-flash";
-				reg = <0x60000000 DT_SIZE_K(1024)>;
-				erase-block-size = <DT_SIZE_K(4)>;
-				write-block-size = <4>;
-			};
 		};
 	};
 };

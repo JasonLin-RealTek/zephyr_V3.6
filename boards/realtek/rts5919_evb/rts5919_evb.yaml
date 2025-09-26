@@ -3,8 +3,8 @@
 # Copyright (c) 2024 Realtek Semiconductor Corporation, SIBG-SD7
 #
 
-identifier: rts5918_evb
-name: RTS5918-EVB
+identifier: rts5919_evb
+name: rts5919-EVB
 type: mcu
 arch: arm
 toolchain:

@@ -41,6 +41,13 @@
 #define FUNC3 REALTEK_RTS5912_FUNC3
 #define FUNC4 REALTEK_RTS5912_FUNC4
 
+#define PIN_SEL_MSK GENMASK(10, 8)
+#define PIN_SEL_POS 8
+#define BIT_LENGTH_MSK BIT(7)
+#define BIT_VALUE_MSK GENMASK(6, 5)
+#define BIT_VALUE_POS 5
+#define BIT_SHIFT_MSK GENMASK(4, 0)
+
 #define REALTEK_RTS5912_PINMUX(n, f)                                                               \
 	(((((n) >> 5) & REALTEK_RTS5912_GPIO_HIGH_MSK) << REALTEK_RTS5912_GPIO_HIGH_POS) |         \
 	 (((n) & REALTEK_RTS5912_GPIO_LOW_MSK) << REALTEK_RTS5912_GPIO_LOW_POS) | (f))
