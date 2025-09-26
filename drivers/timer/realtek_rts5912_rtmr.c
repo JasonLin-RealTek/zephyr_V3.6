@@ -17,10 +17,7 @@
 #include <zephyr/drivers/timer/system_timer.h>
 
 #include <reg/reg_rtmr.h>
-
-#ifndef CONFIG_SOC_RTS5919
 #include <reg/reg_system.h>
-#endif
 
 #define RTS5912_SCCON_REG_BASE ((SYSTEM_Type *)(DT_REG_ADDR(DT_NODELABEL(sccon))))
 
@@ -30,12 +27,8 @@ BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) == 1,
 	     "Realtek RTOS timer is not supported multiple instances");
 
 #define RTMR_REG ((RTOSTMR_Type *)DT_INST_REG_ADDR(0))
-
 #define SLWTMR_REG ((RTOSTMR_Type *)(DT_REG_ADDR(DT_NODELABEL(slwtmr0))))
 
-#ifndef CONFIG_SOC_RTS5919
-#define SSCON_REG ((SYSTEM_Type *)(DT_REG_ADDR(DT_NODELABEL(sccon))))
-#endif
 
 #define RTMR_COUNTER_MAX   0x0ffffffful
 #define RTMR_COUNTER_MSK   0x0ffffffful
@@ -230,11 +223,9 @@ static int sys_clock_driver_init(void)
 	RTMR_REG->INTSTS = RTOSTMR_INTSTS_STS_Msk;
 	NVIC_ClearPendingIRQ(DT_INST_IRQN(0));
 
-#ifndef CONFIG_SOC_RTS5919
 	SYSTEM_Type *sys_reg = RTS5912_SCCON_REG_BASE;
 	sys_reg->IPCLK3 |= SYSTEM_IPCLK3__RTMR_Msk;
 	sys_reg->APBCLK1 |= SYSTEM_APBCLK1__RTMR_Msk;
-#endif
 
 	/* Enable RTMR interrupt. */
 	IRQ_CONNECT(DT_INST_IRQN(0), DT_INST_IRQ(0, priority), rtmr_isr, 0, 0);
@@ -249,10 +240,9 @@ static int sys_clock_driver_init(void)
 
 #ifdef CONFIG_ARCH_HAS_CUSTOM_BUSY_WAIT
 
-#ifndef CONFIG_SOC_RTS5919
 	/* Enable SLWTMR0 clock power */
 	sys_reg->IPCLK2 |= SYSTEM_IPCLK2__SLWTMR0_Msk;
-#endif
+
 	/* Enable SLWTMR0 */
 	SLWTMR_REG->LDCNT = UINT32_MAX;
 	SLWTMR_REG->CTRL = RTOSTMR_CTRL_MDSEL_Msk | RTOSTMR_CTRL_EN_Msk;
