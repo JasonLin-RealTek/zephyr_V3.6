@@ -61,8 +61,8 @@ static int rts5912_uart_init(const struct device *dev)
 		.clk_dev = DEVICE_DT_GET(DT_INST_CLOCKS_CTLR(n)),                                  \
 		.sccon_cfg =                                                                       \
 			{                                                                          \
-				.clk_grp = DT_INST_CLOCKS_CELL_BY_NAME(n, uart##n, clk_grp),       \
-				.clk_idx = DT_INST_CLOCKS_CELL_BY_NAME(n, uart##n, clk_idx),       \
+				.clk_grp = DT_INST_CLOCKS_CELL(n, clk_grp),       \
+				.clk_idx = DT_INST_CLOCKS_CELL(n, clk_idx),       \
 			},                                                                         \
 	};                                                                                         \
                                                                                                    \

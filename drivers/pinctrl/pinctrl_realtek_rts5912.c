@@ -22,14 +22,6 @@
 static volatile GPIO_Type *pinctrl_base =
 	(volatile GPIO_Type *)(DT_REG_ADDR(DT_NODELABEL(pinctrl)));
 
-enum {
-	normal_pin,
-	ixc_input_select,
-	uart_lpt_select,
-	ip_input_select,
-	spic_input_select,
-};
-
 /* from bit 3 to 7 & bit 18 to 23
  * there will be 11bits for us to use
  * two bits of the MSB will be used to select register 	
@@ -46,32 +38,31 @@ int pinctrl_configure_pins(const pinctrl_soc_pin_t *pins, uint8_t pin_cnt, uintp
 		pin = REALTEK_RTS5912_PINMUX_GET_GPIO_PIN(pinmux);
 		func = REALTEK_RTS5912_GET_PURE_PINMUX(pinmux);
 		pin_sel = (pin & PIN_SEL_MSK) >> PIN_SEL_POS;
-		if(pin & BIT_LENGTH_MSK){
-			bit_length = 2;
-			bit_length_msk = 0x3;
-		} else {
-			bit_length = 1;
-			bit_length_msk = 0x1;
-		}
-
-		bit_value_msk_shift = bit_length_msk << ( pin & BIT_SHIFT_MSK);
-		bit_value_shift = (((pin & BIT_VALUE_MSK) >> BIT_VALUE_POS) << ( pin & BIT_SHIFT_MSK));
-
-		if( pin_sel){
+		
+		if(pin_sel){
+			if(pin & BIT_LENGTH_MSK){
+				bit_length = 2;
+				bit_length_msk = 0x3;
+			} else {
+				bit_length = 1;
+				bit_length_msk = 0x1;
+			}
+			bit_value_msk_shift = bit_length_msk << ( pin & BIT_SHIFT_MSK);
+			bit_value_shift = (((pin & BIT_VALUE_MSK) >> BIT_VALUE_POS) << ( pin & BIT_SHIFT_MSK));
 			switch (pin_sel){
-				case ixc_input_select:
+				case IXC_INPUT:
 					sys_reg -> IXCINPUTSEL &= ~bit_value_msk_shift ;
 					sys_reg -> IXCINPUTSEL |= bit_value_shift;
 					break;
-				case uart_lpt_select:
+				case UART_LPT:
 					sys_reg -> _UART__LPT_INPUT_SEL &= ~bit_value_msk_shift ;
 					sys_reg -> _UART__LPT_INPUT_SEL |= bit_value_shift;
 					break;
-				case ip_input_select:
+				case IP_INPUT:
 					sys_reg -> IP_INPUT_SEL &= ~bit_value_msk_shift ;
 					sys_reg -> IP_INPUT_SEL |= bit_value_shift;
 					break;
-				case spic_input_select:
+				case SPIC_INPUT:
 					sys_reg -> SPIC_INPUT_SEL &= ~bit_value_msk_shift ;
 					sys_reg -> SPIC_INPUT_SEL |= bit_value_shift;
 					break;

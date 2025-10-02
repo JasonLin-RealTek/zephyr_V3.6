@@ -16,8 +16,8 @@
 
 	chosen {
 		zephyr,sram = &sram0;
-		zephyr,console = &uart0;
-		zephyr,shell-uart = &uart0;
+		zephyr,console = &uart1;
+		zephyr,shell-uart = &uart1;
 		zephyr,flash = &flash0;
 	};
 };
@@ -29,6 +29,28 @@
 
 &uart0_wrapper {
 	status = "okay";
-	pinctrl-0 = <&uart_rx_gpio012 &uart_tx_gpio013>;
+	pinctrl-0 = <&uart00_rx_gpio139 &uart00_tx_gpio140>;
+	pinctrl-names = "default";
+};
+
+&uart1 {
+	status = "okay";
+	current-speed = <115200>;
+};
+
+&uart1_wrapper {
+	status = "okay";
+	pinctrl-0 = <&uart01_rxa_gpio012 &uart01_rxa_gpio012_pin_sel &uart01_tx_gpio013>;
+	pinctrl-names = "default";
+};
+
+&uart2 {
+	status = "okay";
+	current-speed = <115200>;
+};
+
+&uart2_wrapper {
+	status = "okay";
+	pinctrl-0 = <&uart02_rxa_gpio047 &uart02_rxa_gpio047_pin_sel &uart02_tx_gpio048>;
 	pinctrl-names = "default";
 };
