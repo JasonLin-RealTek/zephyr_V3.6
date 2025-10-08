@@ -1255,18 +1255,8 @@ typedef struct {                                /*!< (@ 0x40100000) SYSTEM Struc
     } LDOCTRL_b;
   } ;
   volatile const uint32_t  RESERVED2;
-  
-  union {
-    volatile uint32_t PLLCTRL;                     /*!< (@ 0x00000120) PLL CONTROL REGISTER                                       */
-    
-    struct {
-      volatile uint32_t PWREN      : 1;            /*!< [0..0] PLL Power Enable                                                   */
-            uint32_t            : 18;
-      volatile uint32_t ARDY       : 1;            /*!< [19..19] PLL Analog Ready and Stable                                      */
-      volatile uint32_t DRDY       : 1;            /*!< [20..20] PLL Digital Ready and Stable                                     */
-            uint32_t            : 11;
-    } PLLCTRL_b;
-  } ;
+	volatile uint32_t PLLCTRL;                     /*!< (@ 0x00000120) PLL CONTROL REGISTER                                       */
+
   volatile const uint32_t  RESERVED3;
   
   union {

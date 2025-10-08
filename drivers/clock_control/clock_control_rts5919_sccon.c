@@ -81,7 +81,7 @@ static int rts5912_periph_clock_control(const struct device *dev, clock_control_
 	const struct rts5912_sccon_config *const config = dev->config;
 	struct rts5912_sccon_subsys *subsys = (struct rts5912_sccon_subsys *)sub_system;
 
-	volatile SYSTEM_Type *sys_reg = (SYSTEM_Type *)config->reg_base;
+	volatile SYSTEM_Type *sys_reg = (volatile SYSTEM_Type *)config->reg_base;
 
 	uint32_t clk_grp = subsys->clk_grp;
 	uint32_t clk_idx = subsys->clk_idx;
@@ -922,7 +922,7 @@ static int rts5912_clock_control_init(const struct device *dev)
 	uint32_t wf_cycle_count = k_us_to_cyc_ceil32(RTS5912_MAXIMUM_POLLING_TIME_US);
 	uint32_t wf_start = k_cycle_get_32();
 	uint32_t wf_now = wf_start;
-	SYSTEM_Type *sys_reg = (SYSTEM_Type *)config->reg_base;
+	volatile SYSTEM_Type *sys_reg = (volatile SYSTEM_Type *)config->reg_base;
 
 	sys_reg->SYSCLK |= SYSTEM_SYSCLK__APB_Msk;
 	if( (sys_reg->PLLCTRL & SYSTEM_PLLCTRL_DRDY_Msk) == 0x0){
@@ -932,7 +932,7 @@ static int rts5912_clock_control_init(const struct device *dev)
 	while( ((sys_reg->PLLCTRL & SYSTEM_PLLCTRL_DRDY_Msk) == 0x0) && (wf_cycle_count > (wf_now - wf_start))){
 		wf_now = k_cycle_get_32();
 	}
-
+	
 	if( (sys_reg->PLLCTRL & SYSTEM_PLLCTRL_DRDY_Msk) == 0x0 ){
 		LOG_ERR("system clk select PLL fail");
 		return -EIO;

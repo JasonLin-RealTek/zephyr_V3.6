@@ -9,6 +9,7 @@
 int main(void)
 {
 	printf("Hello World! %s\n", CONFIG_BOARD_TARGET);
+	while(1);
 
 	return 0;
 }
