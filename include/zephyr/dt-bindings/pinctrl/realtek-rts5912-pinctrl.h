@@ -71,6 +71,6 @@
 
 #define REALTEK_RTS5919_PIN_SEL(sel, length, value, shift)                           \
 	(((sel<<PIN_SEL_POS)& PIN_SEL_MSK) | ((length<<BIT_LENGTH_POS)&BIT_LENGTH_MSK) |  \
-	((value<<BIT_VALUE_POS)&BIT_VALUE_MSK) | ((shift<<BIT_VALUE_POS)&BIT_SHIFT_MSK))
+	((value<<BIT_VALUE_POS)&BIT_VALUE_MSK) | ((shift<<BIT_SHIFT_POS)&BIT_SHIFT_MSK))
 
 #endif /* ZEPHYR_INCLUDE_DT_BINDINGS_PINCTRL_REALTEK_RTS5912_PINCTRL_H_ */

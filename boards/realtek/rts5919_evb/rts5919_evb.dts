@@ -37,10 +37,17 @@
 	status = "okay";
 	current-speed = <115200>;
 };
-
+/*
 &uart1_wrapper {
 	status = "okay";
 	pinctrl-0 = <&uart01_rxa_gpio012 &uart01_rxa_gpio012_pin_sel &uart01_tx_gpio013>;
+	pinctrl-names = "default";
+};
+*/
+
+&uart1_wrapper {
+	status = "okay";
+	pinctrl-0 = <&uart01_tx_gpio147 &uart01_rxb_gpio146 &uart01_rxb_gpio146_pin_sel >;
 	pinctrl-names = "default";
 };
 

@@ -337,6 +337,7 @@ static int rts5912_periph_clock_control(const struct device *dev, clock_control_
 			break;
 		case RTS5919_CLK_LOW:
 			if( true == on_off ){
+				sys_reg->SYSCLKSEL |= 1 << SYSTEM_SYSCLKSEL_LOWCLK_Pos;
 				sys_reg->SYSCLK |= SYSTEM_SYSCLK__LOWCLK_Msk;
 				switch (clk_idx) {
 				case RTS5919_ADC_PWR:
@@ -568,6 +569,7 @@ static int rts5912_periph_clock_control(const struct device *dev, clock_control_
 					break;
 				case RTS5919_KBM_PWR:
 					sys_reg->IPCLK2 |= SYSTEM_IPCLK2__KBM_Msk;
+					sys_reg->APBCLK0 |= SYSTEM_APBCLK0__KBM_Msk;
 					break;
 	/*          // wait new header
 				case RTS5919_LPC_PWR:
@@ -693,7 +695,7 @@ static int rts5912_periph_clock_control(const struct device *dev, clock_control_
 					break;
 				case RTS5919_KBM_PWR:
 					sys_reg->IPCLK2 &= ~SYSTEM_IPCLK2__KBM_Msk;
-					sys_reg->APBCLK0 |= SYSTEM_APBCLK0__KBM_Msk;
+					
 					break;
 	/*          // wait new header
 				case RTS5919_LPC_PWR:

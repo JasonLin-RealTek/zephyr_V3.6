@@ -11,6 +11,7 @@
 #include <zephyr/dt-bindings/pinctrl/realtek-rts5912-pinctrl.h>
 #include <reg/reg_gpio.h>
 #include <reg/reg_system.h>
+#include <stdio.h>
 
 #define REALTEK_RTS5912_PINMUX_GET_GPIO_PIN(n)                                                     \
 	(((((n) >> REALTEK_RTS5912_GPIO_LOW_POS) & REALTEK_RTS5912_GPIO_LOW_MSK)) |                \
@@ -53,18 +54,26 @@ int pinctrl_configure_pins(const pinctrl_soc_pin_t *pins, uint8_t pin_cnt, uintp
 				case IXC_INPUT:
 					sys_reg -> IXCINPUTSEL &= ~bit_value_msk_shift ;
 					sys_reg -> IXCINPUTSEL |= bit_value_shift;
+					printf("IXC_INPUT %x\r\n",bit_value_shift);
+					printf("IXC_INPUT %x\r\n", (uint32_t) &(sys_reg -> IXCINPUTSEL));
 					break;
 				case UART_LPT:
 					sys_reg -> _UART__LPT_INPUT_SEL &= ~bit_value_msk_shift ;
 					sys_reg -> _UART__LPT_INPUT_SEL |= bit_value_shift;
+					printf("UART_LPT %x\r\n",bit_value_shift);
+					printf("UART_LPT %x\r\n", (uint32_t) &(sys_reg -> _UART__LPT_INPUT_SEL));
 					break;
 				case IP_INPUT:
 					sys_reg -> IP_INPUT_SEL &= ~bit_value_msk_shift ;
 					sys_reg -> IP_INPUT_SEL |= bit_value_shift;
+					printf("IP_INPUT %x\r\n",bit_value_shift);
+					printf("IP_INPUT %x\r\n", (uint32_t) &(sys_reg -> IP_INPUT_SEL));
 					break;
 				case SPIC_INPUT:
 					sys_reg -> SPIC_INPUT_SEL &= ~bit_value_msk_shift ;
 					sys_reg -> SPIC_INPUT_SEL |= bit_value_shift;
+					printf("SPIC_INPUT %x\r\n",bit_value_shift);
+					printf("SPIC_INPUT %x\r\n", (uint32_t) &(sys_reg -> SPIC_INPUT_SEL));
 					break;
 				default:
 					return -EINVAL;

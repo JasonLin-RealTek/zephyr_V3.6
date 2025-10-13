@@ -227,6 +227,11 @@ static int sys_clock_driver_init(void)
 	sys_reg->IPCLK3 |= SYSTEM_IPCLK3__RTMR_Msk;
 	sys_reg->APBCLK1 |= SYSTEM_APBCLK1__RTMR_Msk;
 
+	sys_reg->CLKGATING3 |= SYSTEM_CLKGATING3__RTMR_Msk;
+	sys_reg->IPRST3 &= ~SYSTEM_IPRST3__RTMR_Msk;
+	sys_reg->IPRST3 |= SYSTEM_IPRST3__RTMR_Msk;
+	sys_reg->CLKGATING3 &= ~SYSTEM_CLKGATING3__RTMR_Msk;
+
 	/* Enable RTMR interrupt. */
 	IRQ_CONNECT(DT_INST_IRQN(0), DT_INST_IRQ(0, priority), rtmr_isr, 0, 0);
 	irq_enable(DT_INST_IRQN(0));

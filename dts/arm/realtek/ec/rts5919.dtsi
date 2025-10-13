@@ -232,6 +232,206 @@
 		pinctrl: pin-controller@40230000 {
 			compatible = "realtek,rts5912-pinctrl";
 			reg = <0x40230000 0x300>;
+
+			/* GPIO0-GPIO7 */
+			gpioa: gpio@40230000 {
+				compatible = "realtek,rts5912-gpio";
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x40230000 0x20>;
+				ngpios = <8>;
+				interrupts = <0 0>;
+			};
+
+			/* GPIO8-GPIO15 */
+			gpiob: gpio@40230020 {
+				compatible = "realtek,rts5912-gpio";
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x40230020 0x20>;
+				ngpios = <8>;
+				interrupts = <1 0>;
+			};
+
+			/* GPIO16-GPIO23 */
+			gpioc: gpio@40230040 {
+				compatible = "realtek,rts5912-gpio";
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x40230040 0x20>;
+				ngpios = <8>;
+				interrupts = <2 0>;
+			};
+
+			/* GPIO24-GPIO31 */
+			gpiod: gpio@40230060 {
+				compatible = "realtek,rts5912-gpio";
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x40230060 0x20>;
+				ngpios = <8>;
+				interrupts = <3 0>;
+			};
+
+			/* GPIO32-GPIO39 */
+			gpioe: gpio@40230080 {
+				compatible = "realtek,rts5912-gpio";
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x40230080 0x20>;
+				ngpios = <8>;
+				interrupts = <4 0>;
+			};
+
+			/* GPIO40-GPIO47 */
+			gpiof: gpio@402300A0 {
+				compatible = "realtek,rts5912-gpio";
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x402300A0 0x20>;
+				ngpios = <8>;
+				interrupts = <5 0>;
+			};
+
+			/* GPIO48-GPIO55 */
+			gpiog: gpio@402300C0 {
+				compatible = "realtek,rts5912-gpio";
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x402300C0 0x20>;
+				ngpios = <8>;
+				interrupts = <6 0>;
+			};
+
+			/* GPIO56-GPIO63 */
+			gpioh: gpio@402300E0 {
+				compatible = "realtek,rts5912-gpio";
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x402300E0 0x20>;
+				ngpios = <8>;
+				interrupts = <7 0>;
+			};
+
+			/* GPIO64-GPIO71 */
+			gpioi: gpio@40230100 {
+				compatible = "realtek,rts5912-gpio";
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x40230100 0x20>;
+				ngpios = <8>;
+				interrupts = <8 0>;
+			};
+
+			/* GPIO72-GPIO79 */
+			gpioi: gpio@40230120 {
+				compatible = "realtek,rts5912-gpio";
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x40230120 0x20>;
+				ngpios = <8>;
+				interrupts = <9 0>;
+			};
+
+			/* GPIO80-GPIO87 */
+			gpioi: gpio@40230140 {
+				compatible = "realtek,rts5912-gpio";
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x40230140 0x20>;
+				ngpios = <8>;
+				interrupts = <10 0>;
+			};
+
+			/* GPIO88-GPIO95 */
+			gpioi: gpio@40230160 {
+				compatible = "realtek,rts5912-gpio";
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x40230160 0x20>;
+				ngpios = <8>;
+				interrupts = <11 0>;
+			};
+
+			/* GPIO96-GPIO103 */
+			gpioi: gpio@40230180 {
+				compatible = "realtek,rts5912-gpio";
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x40230180 0x20>;
+				ngpios = <8>;
+				interrupts = <12 0>;
+			};
+
+			/* GPIO104-GPIO111 */
+			gpioi: gpio@402301A0 {
+				compatible = "realtek,rts5912-gpio";
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x402301A0 0x20>;
+				ngpios = <8>;
+				interrupts = <13 0>;
+			};
+
+			/* GPIO112-GPIO119 */
+			gpioi: gpio@402301C0 {
+				compatible = "realtek,rts5912-gpio";
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x402301C0 0x20>;
+				ngpios = <8>;
+				interrupts = <14 0>;
+			};
+
+			/* GPIO120-GPIO127 */
+			gpioi: gpio@402301E0 {
+				compatible = "realtek,rts5912-gpio";
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x402301E0 0x20>;
+				ngpios = <8>;
+				interrupts = <15 0>;
+			};
+
+			/* GPIO128-GPIO135 */
+			gpioi: gpio@40230200 {
+				compatible = "realtek,rts5912-gpio";
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x40230200 0x20>;
+				ngpios = <8>;
+				interrupts = <16 0>;
+			};
+
+			/* GPIO136-GPIO143 */
+			gpioi: gpio@40230220 {
+				compatible = "realtek,rts5912-gpio";
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x40230220 0x20>;
+				ngpios = <8>;
+				interrupts = <17 0>;
+			};
+
+			/* GPIO144-GPIO151 */
+			gpioi: gpio@40230240 {
+				compatible = "realtek,rts5912-gpio";
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x40230240 0x20>;
+				ngpios = <8>;
+				interrupts = <18 0>;
+			};
+
+			/* GPIO152-GPIO159 */
+			gpioi: gpio@40230260 {
+				compatible = "realtek,rts5912-gpio";
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x40230260 0x20>;
+				ngpios = <8>;
+				interrupts = <19 0>;
+			};
 		};
 	};
 };

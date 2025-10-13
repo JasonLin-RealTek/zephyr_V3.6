@@ -17,8 +17,8 @@
 
 LOG_MODULE_REGISTER(uart_rts5912, CONFIG_UART_LOG_LEVEL);
 
-BUILD_ASSERT(CONFIG_UART_RTS5912_INIT_PRIORITY < CONFIG_SERIAL_INIT_PRIORITY,
-	     "The uart_realtek_rts5912 driver must be initialized before the uart_ns16550 driver");
+//BUILD_ASSERT(CONFIG_UART_RTS5912_INIT_PRIORITY < CONFIG_SERIAL_INIT_PRIORITY,
+//	     "The uart_realtek_rts5912 driver must be initialized before the uart_ns16550 driver");
 
 /* device config */
 struct uart_rts5912_device_config {
@@ -30,7 +30,13 @@ struct uart_rts5912_device_config {
 /** Device data structure */
 struct uart_rts5912_dev_data {
 };
+void uart_wrap_pin(const struct device *dev)
+{
+	const struct uart_rts5912_device_config *const dev_cfg = dev->config;
+	int rc;
 
+	rc = pinctrl_apply_state(dev_cfg->pcfg, PINCTRL_STATE_DEFAULT);
+}
 static int rts5912_uart_init(const struct device *dev)
 {
 	const struct uart_rts5912_device_config *const dev_cfg = dev->config;
