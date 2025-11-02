@@ -61,3 +61,13 @@
 	pinctrl-0 = <&uart02_rxa_gpio047 &uart02_rxa_gpio047_pin_sel &uart02_tx_gpio048>;
 	pinctrl-names = "default";
 };
+
+&espi0 {
+	status = "okay";
+	pinctrl-0 = < &espi_alert_gpio000 &espi_cs_gpio004
+				&espi_io3_gpio005 &espi_io2_gpio006
+				&espi_io1_gpio007 &espi_io0_gpio008
+				&espi_clk_gpio009 &espi_reset_gpio002
+				&espi_reset_gpio002_pin_sel>;
+	pinctrl-names = "default";
+};

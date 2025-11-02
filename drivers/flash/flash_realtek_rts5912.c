@@ -102,6 +102,7 @@ struct qspi_cmd {
 struct flash_rts5912_dev_config {
 	volatile struct reg_spic_reg *regs;
 	struct flash_parameters flash_rts5912_parameters;
+	uint32_t enter_4ba;
 };
 
 struct flash_rts5912_dev_data {
@@ -221,6 +222,8 @@ static inline void spic_cs_deactivate(const struct device *dev)
 	spic_reg->SER = 0UL;
 }
 
+
+
 static inline void spic_usermode(const struct device *dev)
 {
 	const struct flash_rts5912_dev_config *config = dev->config;
@@ -235,6 +238,24 @@ static inline void spic_automode(const struct device *dev)
 	volatile struct reg_spic_reg *spic_reg = config->regs;
 
 	spic_reg->CTRL0 &= ~SPIC_CTRL0_USERMD;
+}
+
+uint32_t SPIC_AutoMode_EnterEngineer(const struct device *dev)
+{
+	const struct flash_rts5912_dev_config *config = dev->config;
+	volatile struct reg_spic_reg *spic_reg = config->regs;
+    
+	spic_usermode();
+    
+    SPIC->VALIDCMD = 0x000007E0;    // Enter Engineer mode
+    SPIC->VALIDCMD  = 0x00000600;   // Enter Engineer mode
+    SPIC->VALIDCMD  = 0x00000000;   // enable auto write enable command and read status command
+
+    if (!(SPIC->VALIDCMD & 0x80000000ul)) {
+        return 1;
+    }
+    
+    return 0;
 }
 
 static void spic_prepare_command(const struct device *dev, const struct qspi_cmd *command,
@@ -367,6 +388,16 @@ static int spic_read(const struct device *dev, const struct qspi_cmd *command, v
 	spic_automode(dev);
 
 	return ret;
+}
+
+static int flash_enter_4byte(const struct device *dev)
+{
+	struct flash_rts5912_dev_data *data = dev->data;
+	struct qspi_cmd *command = &data->command_default;
+	uint32_t len = 0;
+
+	config_command(command, SPI_NOR_CMD_4BA, 0, 0, 0);
+	return spic_write(dev, command, NULL, &len);
 }
 
 static int flash_write_enable(const struct device *dev)
@@ -807,6 +838,7 @@ static int flash_rts5912_init(const struct device *dev)
 	const struct flash_rts5912_dev_config *config = dev->config;
 	volatile struct reg_spic_reg *spic_reg = config->regs;
 	struct flash_rts5912_dev_data *data = dev->data;
+	uint32_t ret = 0;
 
 	spic_reg->SSIENR = 0UL;
 	spic_reg->IMR = 0UL;
@@ -818,6 +850,38 @@ static int flash_rts5912_init(const struct device *dev)
 	spic_reg->FBAUD = 1UL;
 
 	k_sem_init(&data->sem, 1, 1);
+
+	if (!(spic_reg->VALIDCMD & 0x80000000ul)) {
+		ret = SPIC_AutoMode_EnterEngineer(dev);
+		if(ret){
+			LOG_ERR("Enter engineer mode failed %d!", ret);
+			return ret;
+		}
+    }
+
+	if (config->enter_4ba != 0) {
+		bool wr_en = (config->enter_4ba & 0x02) != 0;
+
+		if (wr_en) {
+			ret = flash_write_enable(dev);
+			if (ret != 0) {
+				LOG_ERR("Enable 4byte addr: WREN failed %d!", ret);
+				return ret;
+			}
+		}
+		ret = flash_enter_4byte(dev);
+		if (ret != 0) {
+			LOG_ERR("Enable 4byte addr: 4BA failed %d!", ret);
+			return ret;
+		}
+		spic_reg->VALIDCMD |= (0x1);
+    	spic_reg->RFS  &= ~(0xFF);
+   	 	spic_reg->RFS  |= SPI_NOR_CMD_READ_4B;
+   	 	spic_reg->AUTOLENGTH &= ~(0xF << 16);
+    	spic_reg->AUTOLENGTH |= (0x4 << 16);
+	}
+	
+	spic_automode(dev);
 
 	return 0;
 }
@@ -850,6 +914,7 @@ static const struct flash_rts5912_dev_config flash_rts5912_config = {
 			.write_block_size = FLASH_WRITE_BLK_SZ,
 			.erase_value = 0xff,
 		},
+	.enter_4ba = DT_INST_PROP_OR(n, enter_4byte_addr, 0),
 };
 
 DEVICE_DT_INST_DEFINE(0, flash_rts5912_init, NULL, &flash_rts5912_data, &flash_rts5912_config,

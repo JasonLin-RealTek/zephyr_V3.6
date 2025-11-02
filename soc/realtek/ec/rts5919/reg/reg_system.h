@@ -1391,8 +1391,9 @@ typedef struct {                                /*!< (@ 0x40100000) SYSTEM Struc
             uint32_t            : 29;
     } WUE_b;
   } ;
-  volatile const uint32_t  RESERVED6[246];
-  
+  volatile const uint32_t  RESERVED6[207];
+  volatile uint32_t ESPI_CLK_PAD;
+  volatile const uint32_t  RESERVED6[38];
   union {
     volatile uint32_t _32KSRC;                     /*!< (@ 0x00000904) 32K CLK SOURCE REGISTER                                    */
     
@@ -3158,7 +3159,8 @@ typedef struct {                                /*!< (@ 0x40100000) SYSTEM Struc
 #define SYSTEM_PLLCTRL_ARDY_Msk           BIT(SYSTEM_PLLCTRL_ARDY_Pos)           
 #define SYSTEM_PLLCTRL_DRDY_Pos           (20UL)               
 #define SYSTEM_PLLCTRL_DRDY_Msk           BIT(SYSTEM_PLLCTRL_DRDY_Pos)
-
+#define SYSTEM_ESPI_CLK_PAD_DRIVING_Pos   (1UL)
+#define SYSTEM_ESPI_CLK_PAD_DRIVING_Msk   BIT(SYSTEM_ESPI_CLK_PAD_DRIVING_Pos)
 #define RTS5912_SCCON_REG_BASE ((SYSTEM_Type *)(DT_REG_ADDR(DT_NODELABEL(sccon))))
 
 #endif /* ZEPHYR_SOC_REALTEK_RTS5919_REG_SYSTEM_H */

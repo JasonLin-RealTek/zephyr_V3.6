@@ -80,7 +80,11 @@ int pinctrl_configure_pins(const pinctrl_soc_pin_t *pins, uint8_t pin_cnt, uintp
 					break;
 			}
 		} else {
-			pinctrl_base->GCR[pin] = func;
+			if((func & REALTEK_RTS5912_FUNC_MSK) == 0x00 ){
+				pinctrl_base->GCR[pin] = 0;
+			}else{
+				pinctrl_base->GCR[pin] = func;
+			}
 		}
 	}
 	return 0;

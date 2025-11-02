@@ -90,6 +90,7 @@ static int rts5912_periph_clock_control(const struct device *dev, clock_control_
 		case RTS5919_CLK_ESPI:
 			if( true == on_off ){
 				sys_reg->SYSCLK |= SYSTEM_SYSCLK__ESPI_Msk;
+				sys_reg->ESPI_CLK_PAD |= SYSTEM_ESPI_CLK_PAD_DRIVING_Msk;
 				switch (clk_idx) {
 				case RTS5919_ESPI_PWR:
 					sys_reg->IPCLK0 |= SYSTEM_IPCLK0__ESPI_Msk;

@@ -229,6 +229,20 @@
 			status = "disabled";
 		};
 
+		flash_controller: flash-controller@40010200 {
+			compatible = "realtek,rts5912-flash-controller";
+			reg = <0x40010200 0x200>;
+			#address-cells = <1>;
+			#size-cells = <1>;
+
+			eflash: eflash@60000000 {
+				compatible = "soc-nv-flash";
+				reg = <0x60000000 DT_SIZE_K(1024)>;
+				erase-block-size = <DT_SIZE_K(4)>;
+				write-block-size = <4>;
+			};
+		};
+
 		pinctrl: pin-controller@40230000 {
 			compatible = "realtek,rts5912-pinctrl";
 			reg = <0x40230000 0x300>;

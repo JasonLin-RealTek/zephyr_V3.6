@@ -135,7 +135,8 @@ static void kbc_obe_isr(const struct device *dev)
 	}
 
 	if (kbc_reg->STS & KBC_STS_OBF) {
-		kbc_reg->OB |= KBC_OB_OBCLR;
+		kbc_reg->STS |= KBC_STS_CLR_OBF_FULL;
+		kbc_reg->STS |= KBC_STS_CLR_OBF_FULL_STS;
 	}
 
 	/* Notify application that host already read out data. */
@@ -262,7 +263,8 @@ static int lpc_request_write_8042(const struct device *dev, enum lpc_peripheral_
 		espi_data->kbc_int_en = 0;
 		break;
 	case E8042_CLEAR_OBF:
-		kbc_reg->OB |= KBC_OB_OBCLR;
+		kbc_reg->STS |= KBC_STS_CLR_OBF_FULL;
+		kbc_reg->STS |= KBC_STS_CLR_OBF_FULL_STS;
 		break;
 	case E8042_SET_FLAG:
 		/* FW shouldn't modify these flags directly */
@@ -502,9 +504,8 @@ static int espi_promt0_setup(const struct device *dev)
 	if (promt0_reg->STS & ACPI_STS_IBF) {
 		rc = promt0_reg->IB;
 	}
-
 	if (promt0_reg->STS & ACPI_STS_IBF) {
-		promt0_reg->IB |= ACPI_IB_IBCLR;
+		promt0_reg->STS |= ACPI_STS_CLR_IBF_FULL;
 	}
 
 	promt0_reg->PTADDR =
@@ -678,9 +679,15 @@ static void espi_port80_isr(const struct device *dev)
 				 ESPI_PERIPHERAL_INDEX_0 << 16 | ESPI_PERIPHERAL_DEBUG_PORT80,
 				 ESPI_PERIPHERAL_NODATA};
 	volatile struct port80_reg *const port80_reg = espi_config->port80_reg;
+	uint8_t port80_write_ptr = (PORT80->STS & PORT80_STS_WRPTR_MSK) >> PORT80_STS_WRPTR_POS;
+	uint8_t port80_read_ptr = (PORT80->STS & PORT80_STS_RDPTR_MSK) >> PORT80_STS_RDPTR_POS;
 
-	evt.evt_data = port80_reg->DATA;
-	espi_send_callbacks(&espi_data->callbacks, dev, evt);
+	while(port80_read_ptr != port80_write_ptr)
+	{
+		evt.evt_data = port80_reg->DATA;
+		espi_send_callbacks(&espi_data->callbacks, dev, evt);
+		port80_read_ptr = (PORT80->STS & PORT80_STS_RDPTR_MSK) >> PORT80_STS_RDPTR_POS;
+	}
 }
 
 static int espi_peri_ch_port80_setup(const struct device *dev)

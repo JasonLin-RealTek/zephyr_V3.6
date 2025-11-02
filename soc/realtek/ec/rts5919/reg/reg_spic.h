@@ -37,13 +37,17 @@ struct reg_spic_reg {
 		uint16_t HALF;
 		uint32_t WORD;
 	} DR;
-	const uint32_t RESERVED2[43];
+	const uint32_t RESERVED2[31];
+	uint32_t RFS;
+	const uint32_t RESERVED3[11];
 	uint32_t CTRLR2;
 	uint32_t FBAUD;
 	uint32_t USERLENGTH;
-	const uint32_t RESERVED3[3];
-	uint32_t FLUSH;
+	uint32_t AUTOLENGTH;
+	uint32_t VALIDCMD;
 	const uint32_t RESERVED4;
+	uint32_t FLUSH;
+	const uint32_t RESERVED5;
 	uint32_t TXNDF;
 };
 

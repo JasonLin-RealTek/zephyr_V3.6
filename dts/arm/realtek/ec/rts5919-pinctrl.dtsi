@@ -471,4 +471,310 @@
 			input-schmitt-enable;
 	};
 	/* UART02 PINCTRL SETTING END */
+		/* ESPI PINCTRL SETTING START */
+	/omit-if-no-ref/ espi_alert_gpio000: espi_alert_gpio000 {
+		pinmux = <REALTEK_RTS5912_PINMUX(0, FUNC1)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ espi_alert_gpio003: espi_alert_gpio003 {
+		pinmux = <REALTEK_RTS5912_PINMUX(3, FUNC1)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ espi_cs_gpio004: espi_cs_gpio004 {
+		pinmux = <REALTEK_RTS5912_PINMUX(4, FUNC1)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ espi_io3_gpio005: espi_io3_gpio005 {
+		pinmux = <REALTEK_RTS5912_PINMUX(5, FUNC0)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ espi_io2_gpio006: espi_io2_gpio006 {
+		pinmux = <REALTEK_RTS5912_PINMUX(6, FUNC0)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ espi_io1_gpio007: espi_io1_gpio007 {
+		pinmux = <REALTEK_RTS5912_PINMUX(7, FUNC0)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ espi_io0_gpio008: espi_io0_gpio008 {
+		pinmux = <REALTEK_RTS5912_PINMUX(8, FUNC0)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ espi_clk_gpio009: espi_clk_gpio009 {
+		pinmux = <REALTEK_RTS5912_PINMUX(9, FUNC0)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ espi_reset_gpio002: espi_reset_gpio002 {
+		pinmux = <REALTEK_RTS5912_PINMUX(2, FUNC1)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ espi_reset_gpio002_pin_sel: espi_reset_gpio002_pin_sel {
+			pinmux = <REALTEK_RTS5912_PINMUX(
+				REALTEK_RTS5919_PIN_SEL(IP_INPUT, BIT_LENGTH_1, 0, 20), 0)>;
+			input-enable;
+			input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ espi_reset_gpio018: espi_reset_gpio018 {
+		pinmux = <REALTEK_RTS5912_PINMUX(18, FUNC1)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ espi_reset_gpio018_pin_sel: espi_reset_gpio018_pin_sel {
+			pinmux = <REALTEK_RTS5912_PINMUX(
+				REALTEK_RTS5919_PIN_SEL(IP_INPUT, BIT_LENGTH_1, 1, 20), 0)>;
+			input-enable;
+			input-schmitt-enable;
+	};
+
+	/* ESPI PINCTRL SETTING END */
+	/* SPIC01 PINCTRL SETTING START */
+	/omit-if-no-ref/ spic01_cs0a_gpio000: spic01_cs0a_gpio000 {
+		pinmux = <REALTEK_RTS5912_PINMUX(0, FUNC2)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_cs0b_gpio001: spic01_cs0b_gpio001 {
+		pinmux = <REALTEK_RTS5912_PINMUX(1, FUNC2)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_cs0c_gpio033: spic01_cs0c_gpio033 {
+		pinmux = <REALTEK_RTS5912_PINMUX(33, FUNC4)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_cs0d_gpio121: spic01_cs0d_gpio121 {
+		pinmux = <REALTEK_RTS5912_PINMUX(121, FUNC1)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_cs0e_gpio122: spic01_cs0e_gpio122 {
+		pinmux = <REALTEK_RTS5912_PINMUX(122, FUNC1)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_cs0f_gpio143: spic01_cs0f_gpio143 {
+		pinmux = <REALTEK_RTS5912_PINMUX(143, FUNC2)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_cs0g_gpio156: spic01_cs0g_gpio156 {
+		pinmux = <REALTEK_RTS5912_PINMUX(156, FUNC1)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_cs0h_gpio157: spic01_cs0h_gpio157 {
+		pinmux = <REALTEK_RTS5912_PINMUX(157, FUNC1)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_clk0a_gpio026: spic01_clk0a_gpio026 {
+		pinmux = <REALTEK_RTS5912_PINMUX(26, FUNC2)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_clk0b_gpio030: spic01_clk0b_gpio030 {
+		pinmux = <REALTEK_RTS5912_PINMUX(30, FUNC4)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_clk0c_gpio125: spic01_clk0c_gpio125 {
+		pinmux = <REALTEK_RTS5912_PINMUX(125, FUNC1)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_clk0d_gpio153: spic01_clk0d_gpio153 {
+		pinmux = <REALTEK_RTS5912_PINMUX(153, FUNC1)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_io0a_gpio032: spic01_io0a_gpio032 {
+		pinmux = <REALTEK_RTS5912_PINMUX(32, FUNC4)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_io0a_gpio032_pin_sel: spic01_io0a_gpio032_pin_sel {
+			pinmux = <REALTEK_RTS5912_PINMUX(
+				REALTEK_RTS5919_PIN_SEL(SPIC_INPUT, BIT_LENGTH_2, 0, 0), 0)>;
+			input-enable;
+			input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_io1a_gpio031: spic01_io1a_gpio031 {
+		pinmux = <REALTEK_RTS5912_PINMUX(31, FUNC4)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_io1a_gpio031_pin_sel: spic01_io1a_gpio031_pin_sel {
+			pinmux = <REALTEK_RTS5912_PINMUX(
+				REALTEK_RTS5919_PIN_SEL(SPIC_INPUT, BIT_LENGTH_2, 0, 2), 0)>;
+			input-enable;
+			input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_io2a_gpio034: spic01_io2a_gpio034 {
+		pinmux = <REALTEK_RTS5912_PINMUX(34, FUNC4)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_io2a_gpio034_pin_sel: spic01_io2a_gpio034_pin_sel {
+			pinmux = <REALTEK_RTS5912_PINMUX(
+				REALTEK_RTS5919_PIN_SEL(SPIC_INPUT, BIT_LENGTH_2, 0, 4), 0)>;
+			input-enable;
+			input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_io3a_gpio035: spic01_io3a_gpio035 {
+		pinmux = <REALTEK_RTS5912_PINMUX(35, FUNC4)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_io3a_gpio035_pin_sel: spic01_io3a_gpio035_pin_sel {
+			pinmux = <REALTEK_RTS5912_PINMUX(
+				REALTEK_RTS5919_PIN_SEL(SPIC_INPUT, BIT_LENGTH_2, 0, 6), 0)>;
+			input-enable;
+			input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_io0b_gpio123: spic01_io0b_gpio123 {
+		pinmux = <REALTEK_RTS5912_PINMUX(32, FUNC1)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_io0b_gpio123_pin_sel: spic01_io0b_gpio123_pin_sel {
+			pinmux = <REALTEK_RTS5912_PINMUX(
+				REALTEK_RTS5919_PIN_SEL(SPIC_INPUT, BIT_LENGTH_2, 1, 0), 0)>;
+			input-enable;
+			input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_io1b_gpio124: spic01_io1b_gpio124 {
+		pinmux = <REALTEK_RTS5912_PINMUX(31, FUNC1)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_io1b_gpio124_pin_sel: spic01_io1b_gpio124_pin_sel {
+			pinmux = <REALTEK_RTS5912_PINMUX(
+				REALTEK_RTS5919_PIN_SEL(SPIC_INPUT, BIT_LENGTH_2, 1, 2), 0)>;
+			input-enable;
+			input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_io2b_gpio119: spic01_io2b_gpio119 {
+		pinmux = <REALTEK_RTS5912_PINMUX(34, FUNC1)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_io2b_gpio119_pin_sel: spic01_io2b_gpio119_pin_sel {
+			pinmux = <REALTEK_RTS5912_PINMUX(
+				REALTEK_RTS5919_PIN_SEL(SPIC_INPUT, BIT_LENGTH_2, 1, 4), 0)>;
+			input-enable;
+			input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_io3b_gpio120: spic01_io3b_gpio120 {
+		pinmux = <REALTEK_RTS5912_PINMUX(35, FUNC1)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_io3b_gpio120_pin_sel: spic01_io3b_gpio120_pin_sel {
+			pinmux = <REALTEK_RTS5912_PINMUX(
+				REALTEK_RTS5919_PIN_SEL(SPIC_INPUT, BIT_LENGTH_2, 1, 6), 0)>;
+			input-enable;
+			input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_io0c_gpio155: spic01_io0c_gpio155 {
+		pinmux = <REALTEK_RTS5912_PINMUX(155, FUNC1)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_io0c_gpio155_pin_sel: spic01_io0c_gpio155_pin_sel {
+			pinmux = <REALTEK_RTS5912_PINMUX(
+				REALTEK_RTS5919_PIN_SEL(SPIC_INPUT, BIT_LENGTH_2, 2, 0), 0)>;
+			input-enable;
+			input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_io1c_gpio154: spic01_io1c_gpio154 {
+		pinmux = <REALTEK_RTS5912_PINMUX(154, FUNC1)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_io1c_gpio154_pin_sel: spic01_io1c_gpio154_pin_sel {
+			pinmux = <REALTEK_RTS5912_PINMUX(
+				REALTEK_RTS5919_PIN_SEL(SPIC_INPUT, BIT_LENGTH_2, 2, 2), 0)>;
+			input-enable;
+			input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_io2c_gpio159: spic01_io2c_gpio159 {
+		pinmux = <REALTEK_RTS5912_PINMUX(159, FUNC1)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_io2c_gpio159_pin_sel: spic01_io2c_gpio159_pin_sel {
+			pinmux = <REALTEK_RTS5912_PINMUX(
+				REALTEK_RTS5919_PIN_SEL(SPIC_INPUT, BIT_LENGTH_2, 2, 4), 0)>;
+			input-enable;
+			input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_io3c_gpio158: spic01_io3c_gpio158 {
+		pinmux = <REALTEK_RTS5912_PINMUX(158, FUNC1)>;
+		input-enable;
+		input-schmitt-enable;
+	};
+
+	/omit-if-no-ref/ spic01_io3c_gpio158_pin_sel: spic01_io3c_gpio158_pin_sel {
+			pinmux = <REALTEK_RTS5912_PINMUX(
+				REALTEK_RTS5919_PIN_SEL(SPIC_INPUT, BIT_LENGTH_2, 2, 6), 0)>;
+			input-enable;
+			input-schmitt-enable;
+	};
+
+	/* SPIC01 PINCTRL SETTING END */
 };

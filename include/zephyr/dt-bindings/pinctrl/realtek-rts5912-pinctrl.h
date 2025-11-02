@@ -13,6 +13,7 @@
 #define REALTEK_RTS5912_GPIO_INOUT     BIT(0) /* IN/OUT : 0 input 1 output */
 #define REALTEK_RTS5912_GPIO_PINON     BIT(1) /* Input_detect : 1 enable 0 disable */
 #define REALTEK_RTS5912_GPIO_VOLT      BIT(2) /* Pin Volt : 1 1.8V 0 3.3V */
+#define REALTEK_RTS5912_FUNC_MSK	   GENMASK(10, 8)
 #define REALTEK_RTS5912_FUNC0          0      /* GPIO mode */
 #define REALTEK_RTS5912_FUNC1          BIT(8) /* Function mode use BIT0~2 */
 #define REALTEK_RTS5912_FUNC2          BIT(9)
