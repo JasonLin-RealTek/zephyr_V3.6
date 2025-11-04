@@ -1393,7 +1393,7 @@ typedef struct {                                /*!< (@ 0x40100000) SYSTEM Struc
   } ;
   volatile const uint32_t  RESERVED6[207];
   volatile uint32_t ESPI_CLK_PAD;
-  volatile const uint32_t  RESERVED6[38];
+  volatile const uint32_t  RESERVED7[38];
   union {
     volatile uint32_t _32KSRC;                     /*!< (@ 0x00000904) 32K CLK SOURCE REGISTER                                    */
     

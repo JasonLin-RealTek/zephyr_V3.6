@@ -245,13 +245,13 @@ uint32_t SPIC_AutoMode_EnterEngineer(const struct device *dev)
 	const struct flash_rts5912_dev_config *config = dev->config;
 	volatile struct reg_spic_reg *spic_reg = config->regs;
     
-	spic_usermode();
+	spic_usermode(dev);
     
-    SPIC->VALIDCMD = 0x000007E0;    // Enter Engineer mode
-    SPIC->VALIDCMD  = 0x00000600;   // Enter Engineer mode
-    SPIC->VALIDCMD  = 0x00000000;   // enable auto write enable command and read status command
+    spic_reg->VALIDCMD = 0x000007E0;    // Enter Engineer mode
+    spic_reg->VALIDCMD  = 0x00000600;   // Enter Engineer mode
+    spic_reg->VALIDCMD  = 0x00000000;   // enable auto write enable command and read status command
 
-    if (!(SPIC->VALIDCMD & 0x80000000ul)) {
+    if (!(spic_reg->VALIDCMD & 0x80000000ul)) {
         return 1;
     }
     
