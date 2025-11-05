@@ -51,6 +51,7 @@ zephyr_library_sources_ifdef(CONFIG_CLOCK_CONTROL_PWM                 clock_cont
 zephyr_library_sources_ifdef(CONFIG_CLOCK_CONTROL_RPI_PICO            clock_control_rpi_pico.c)
 zephyr_library_sources_ifdef(CONFIG_CLOCK_CONTROL_NRF_HSFLL_GLOBAL    clock_control_nrf_hsfll_global.c)
 zephyr_library_sources_ifdef(CONFIG_CLOCK_CONTROL_RTS5912_SCCON       clock_control_rts5912_sccon.c)
+zephyr_library_sources_ifdef(CONFIG_CLOCK_CONTROL_RTS5919_SCCON       clock_control_rts5919_sccon.c)
 zephyr_library_sources_ifdef(CONFIG_CLOCK_CONTROL_NRFS_AUDIOPLL       clock_control_nrfs_audiopll.c)
 zephyr_library_sources_ifdef(CONFIG_CLOCK_CONTROL_IT51XXX             clock_control_it51xxx.c)
 zephyr_library_sources_ifdef(CONFIG_CLOCK_CONTROL_NRF2_COMMON         clock_control_nrf2_common.c)

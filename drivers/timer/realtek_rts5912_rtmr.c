@@ -27,10 +27,8 @@ BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) == 1,
 	     "Realtek RTOS timer is not supported multiple instances");
 
 #define RTMR_REG ((RTOSTMR_Type *)DT_INST_REG_ADDR(0))
-
 #define SLWTMR_REG ((RTOSTMR_Type *)(DT_REG_ADDR(DT_NODELABEL(slwtmr0))))
 
-#define SSCON_REG ((SYSTEM_Type *)(DT_REG_ADDR(DT_NODELABEL(sccon))))
 
 #define RTMR_COUNTER_MAX   0x0ffffffful
 #define RTMR_COUNTER_MSK   0x0ffffffful
@@ -226,8 +224,13 @@ static int sys_clock_driver_init(void)
 	NVIC_ClearPendingIRQ(DT_INST_IRQN(0));
 
 	SYSTEM_Type *sys_reg = RTS5912_SCCON_REG_BASE;
+	sys_reg->IPCLK3 |= SYSTEM_IPCLK3__RTMR_Msk;
+	sys_reg->APBCLK1 |= SYSTEM_APBCLK1__RTMR_Msk;
 
-	sys_reg->PERICLKPWR1 |= SYSTEM_PERICLKPWR1_RTMRCLKPWR_Msk;
+	sys_reg->CLKGATING3 |= SYSTEM_CLKGATING3__RTMR_Msk;
+	sys_reg->IPRST3 &= ~SYSTEM_IPRST3__RTMR_Msk;
+	sys_reg->IPRST3 |= SYSTEM_IPRST3__RTMR_Msk;
+	sys_reg->CLKGATING3 &= ~SYSTEM_CLKGATING3__RTMR_Msk;
 
 	/* Enable RTMR interrupt. */
 	IRQ_CONNECT(DT_INST_IRQN(0), DT_INST_IRQ(0, priority), rtmr_isr, 0, 0);
@@ -241,8 +244,9 @@ static int sys_clock_driver_init(void)
 	};
 
 #ifdef CONFIG_ARCH_HAS_CUSTOM_BUSY_WAIT
+
 	/* Enable SLWTMR0 clock power */
-	SSCON_REG->PERICLKPWR1 |= BIT(SYSTEM_PERICLKPWR1_SLWTMR0CLKPWR_Pos);
+	sys_reg->IPCLK2 |= SYSTEM_IPCLK2__SLWTMR0_Msk;
 
 	/* Enable SLWTMR0 */
 	SLWTMR_REG->LDCNT = UINT32_MAX;
